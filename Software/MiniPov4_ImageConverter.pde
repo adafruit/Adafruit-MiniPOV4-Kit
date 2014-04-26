@@ -383,14 +383,24 @@ public void download(int val)
     return;
   }
   
+  print("current dir:"); println(sketchPath(""));
   if (saveToBin("temp.bin"))
   {
+   String os=System.getProperty("os.name");
+   String avrdude = sketchPath("")+"avrdude";
+   if (os.contains("Windows")) {
+     avrdude = sketchPath("")+"avrdude.exe";
+   }
+   if (os.contains("Mac")) {
+     avrdude = sketchPath("")+"avrdude";
+   }
+   println(os);
     // use the VUsbTinyBoot bootloader, for ATmega328P, no fuse safemode, no auto-erase, no progress bar, write the temporary file to eeprom
-    String[] cmd = { "avrdude", "-cusbtiny", "-pm328p", "-s", "-D", "-q", "-q", "-Ueeprom:w:temp.bin:r" };
+    String[] cmd = { avrdude, "-C"+sketchPath("")+"avrdude.conf", "-cusbtiny", "-pm328p", "-s", "-D", "-q", "-q", "-Ueeprom:w:temp.bin:r" };
     print("shell:");
     for (int i = 0; i < cmd.length; i++) print(" " + cmd[i]);
     println();
-    Process p = open(cmd);
+    Process p = exec(cmd);
     String s = new String();
     try {
       p.waitFor();
