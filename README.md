@@ -1,5 +1,5 @@
-MiniPOV4-Kit
-============
+MiniPOV4-Kit with Linux support
+===============================
 
 Files, Firmware and Software for the MiniPOV4 color light-painting kit
 Pick up a kit here: https://www.adafruit.com/products/1776
@@ -16,4 +16,7 @@ Learn to solder by building this easy kit. About 30 components are soldered onto
 
 * Bootloader: The V-USB based bootloader that lets you program the EEPROM over USB for uploading new images.
 
-* Software: The image uploader, for use with Processing!
+* MiniPov4_ImageConverter: The image uploader, for use with Processing 2.x! 
+
+
+Now with linux support: install your distribution's version of avrdude and the MiniPov4_ImageConverter should work.

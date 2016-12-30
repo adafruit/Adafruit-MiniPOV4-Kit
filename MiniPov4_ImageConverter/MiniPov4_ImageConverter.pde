@@ -392,7 +392,10 @@ public void download(int val)
      avrdude = sketchPath("")+"avrdude.exe";
    }
    if (os.contains("Mac")) {
-     avrdude = sketchPath("")+"avrdude";
+     avrdude = sketchPath("")+"avrdude.mac";
+   }
+   if (os.contains("Linux")) {
+     avrdude = sketchPath("")+"avrdude.linux.sh";
    }
    println(os);
     // use the VUsbTinyBoot bootloader, for ATmega328P, no fuse safemode, no auto-erase, no progress bar, write the temporary file to eeprom
